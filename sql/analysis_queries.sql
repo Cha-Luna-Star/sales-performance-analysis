@@ -1,6 +1,6 @@
 -- Overview of sales performance
 SELECT
-    COUNT(*) AS total_orders,
+    COUNT(DISTINCT order_id) AS total_orders,
     SUM(sales) AS total_sales,
     SUM(profit) AS total_profit,
     AVG(discount) AS avg_discount
@@ -66,7 +66,7 @@ SELECT
     END AS discount_bucket,
     AVG(sales) AS avg_sales,
     AVG(profit) AS avg_profit,
-    COUNT(*) AS order_count
+    COUNT(DISTINCT order_id)
 FROM sales
 GROUP BY discount_bucket
 ORDER BY CASE discount_bucket
